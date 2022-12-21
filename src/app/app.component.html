@@ -3,15 +3,19 @@
 <mat-sidenav-container >
 
 <!-- SideNav -->
+<mat-sidenav mode="side" [(opened)]="opened">
 <app-sidenav>
 </app-sidenav>
+</mat-sidenav>
 <!-- END SideNav -->
 
-<!-- Contenido -->
-<mat-sidenav-content>
-<p>jmnakjsdhkjashdk;ljashdlkj</p>
-</mat-sidenav-content>
-<!--  END Contenido -->
+<!-- Contenido  -->
+  <mat-sidenav-content>
+    <app-page-wrapper></app-page-wrapper>
+    <!-- <button mat-button (click)="opened=!opened">botos</button> -->
+  </mat-sidenav-content>
+<!-- END Contenido  -->
+
 
 </mat-sidenav-container>
 <!-- END Contenedor de SideNav con el Contenido -->

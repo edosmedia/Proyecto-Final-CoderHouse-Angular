@@ -1,11 +1,16 @@
 <mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" >
+  <button mat-icon-button (click)="clickMenu()" class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <span><img id="logoUSS" src="../../../../assets/image/logo/logo_uss_2023_v2.svg" alt="logo"></span>
+  <span> 
+    <a href="/">
+      <img id="logoUSS" src="../../../../assets/image/logo/logo_uss_2023_v2.svg" alt="logo">
+    </a>
+  </span>
   <span class="example-spacer"></span>
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>account_circle</mat-icon>
+    <mat-icon>account_circle </mat-icon>
+
   </button>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>logout</mat-icon>

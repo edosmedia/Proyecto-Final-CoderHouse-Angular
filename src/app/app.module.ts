@@ -7,6 +7,7 @@ import { PageWrapperComponent } from './shared/layout/page-wrapper/page-wrapper.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './shared/modules/angular-material/angular-material.module';
 import { SidenavComponent } from './shared/layout/sidenav/sidenav.component';
+import { StudentsPageComponent } from './pages/students-page/students-page.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { SidenavComponent } from './shared/layout/sidenav/sidenav.component';
     HeaderComponent,
     PageWrapperComponent,
     SidenavComponent,
+    StudentsPageComponent,
 
   ],
   imports: [

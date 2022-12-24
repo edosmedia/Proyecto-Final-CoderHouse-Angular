@@ -2,3 +2,9 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-typography h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}

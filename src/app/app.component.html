@@ -1,9 +1,13 @@
-<app-header></app-header>
+<!-- Comienza Header -->
+<app-header opened></app-header>
+<!-- END Header  -->
+
+
 <!-- Comienza Contenedor de SideNav con el Contenido  -->
 <mat-sidenav-container >
 
 <!-- SideNav -->
-<mat-sidenav mode="side" [(opened)]="opened">
+<mat-sidenav mode="side" #sidenav [opened]="isOpen" >
 <app-sidenav>
 </app-sidenav>
 </mat-sidenav>
@@ -11,7 +15,10 @@
 
 <!-- Contenido  -->
   <mat-sidenav-content>
-    <app-page-wrapper></app-page-wrapper>
+    <app-page-wrapper>
+      <app-students-page>
+      </app-students-page>
+    </app-page-wrapper>
     <!-- <button mat-button (click)="opened=!opened">botos</button> -->
   </mat-sidenav-content>
 <!-- END Contenido  -->

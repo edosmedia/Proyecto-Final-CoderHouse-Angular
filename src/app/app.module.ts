@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './shared/modules/angular-material/angular-material.module';
 import { SidenavComponent } from './shared/layout/sidenav/sidenav.component';
 import { StudentsPageComponent } from './pages/students-page/students-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StudentDialogComponent } from './shared/components/student-dialog/student-dialog.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,14 @@ import { StudentsPageComponent } from './pages/students-page/students-page.compo
     PageWrapperComponent,
     SidenavComponent,
     StudentsPageComponent,
-
+    StudentDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

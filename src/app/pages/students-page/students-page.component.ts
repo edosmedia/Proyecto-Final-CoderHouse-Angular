@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Student } from '../../models/student.model';
+import { StudentDialogComponent } from '../../shared/components/student-dialog/student-dialog.component';
 
 @Component({
   selector: 'app-students-page',
@@ -21,13 +23,27 @@ export class StudentsPageComponent implements OnInit {
   ];
 
   displayedColumns = [
-  'id', 
+  'id',
   'firstName',
   'lastName',
   'isActive',
+  'edit',
+  'delete'
 ]
 
-  constructor() {}
+  constructor(private readonly dialogService: MatDialog) {}
+
+  addStudent(){
+    const dialog = this.dialogService.open(StudentDialogComponent)
+    dialog.afterClosed().subscribe((value)=>{
+      if(value) {
+        const lastId = this.students[this.students.length - 1]?.id;
+        console.log(this.students);
+        // this.students.push(new Student(lastId + 1, value.firstName, value.lastName, true ))
+        // this.students = [...this.students, new Student(lastId + 1, value.firstName, value.lastName, true ) ]
+      }
+    })
+  }
 
   ngOnInit(): void {}
 }

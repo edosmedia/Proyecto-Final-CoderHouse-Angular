@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { Student } from '../../models/student.model';
 import { StudentDialogComponent } from '../../shared/components/student-dialog/student-dialog.component';
@@ -35,7 +35,14 @@ export class StudentsPageComponent implements OnInit {
   constructor(private readonly dialogService: MatDialog) {}
 
   addStudent() {
-    const dialog = this.dialogService.open(StudentDialogComponent); // Para Abrir un Dialog
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      titulo: 'Agregar Nuevo Estudiante',
+    };
+    const dialog = this.dialogService.open(
+      StudentDialogComponent,
+      dialogConfig
+    ); // Para Abrir un Dialog
     // console.log(StudentDialogComponent.instance)
     dialog.afterClosed().subscribe((value) => {
       if (value) {
@@ -58,18 +65,24 @@ export class StudentsPageComponent implements OnInit {
   }
 
   editStudent(student: Student) {
-    const dialog = this.dialogService.open(StudentDialogComponent, {
-      data: student,
-    }); // Para Abrir un Dialog
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      titulo: 'Editar Estudiante',
+      firstName: student.firstName,
+      lastName: student.lastName,
+    };
+    dialogConfig.width = '500px';
+    const dialog = this.dialogService.open(
+      StudentDialogComponent,
+      dialogConfig
+    ); // Para Abrir un Dialog
 
     dialog.afterClosed().subscribe((data) => {
       if (data) {
         // console.log(data)
-        // this.students = this.students.map((stun) => stun.id === student.id ? {...stun, ...data }: stun)
-        const temp = this.students.map((stun) =>
-          stun.id === student.id ? { ...stun, ...data } : stun
-        );
-        console.log(temp);
+        this.students = this.students.map((stun) => stun.id === student.id ? {...stun, ...data }: stun)
+        // const temp = this.students.map((stun) => stun.id === student.id ? { ...stun, ...data } : stun);
+        // console.log(temp);
       }
     });
   }

@@ -1,4 +1,5 @@
 export class Student {
+  titulo: string;
   constructor(
     public id: number,
     public firstName: string,

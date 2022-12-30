@@ -19,9 +19,9 @@ export class StudentDialogComponent implements OnInit {
 
   constructor(
     private readonly dialogRef: MatDialogRef<StudentDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Student | null
+    @Inject(MAT_DIALOG_DATA) public data: Student | undefined
   ) {
-    this.titulo;
+    this.titulo = data!.titulo;
     if (data) {
       this.studentForm.patchValue(data);
     }

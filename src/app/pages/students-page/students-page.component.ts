@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { Student } from '../../models/student.model';
@@ -36,7 +36,7 @@ export class StudentsPageComponent implements OnInit {
 
   addStudent() {
     const dialog = this.dialogService.open(StudentDialogComponent); // Para Abrir un Dialog
- 
+    // console.log(StudentDialogComponent.instance)
     dialog.afterClosed().subscribe((value) => {
       if (value) {
         const lastId = this.students[this.students.length - 1]?.id;
@@ -59,18 +59,19 @@ export class StudentsPageComponent implements OnInit {
 
   editStudent(student: Student) {
     const dialog = this.dialogService.open(StudentDialogComponent, {
-     data: student,
-
+      data: student,
     }); // Para Abrir un Dialog
 
-    dialog.afterClosed().subscribe((data)=> {
-      if(data) {
+    dialog.afterClosed().subscribe((data) => {
+      if (data) {
         // console.log(data)
         // this.students = this.students.map((stun) => stun.id === student.id ? {...stun, ...data }: stun)
-        const temp = this.students.map((stun) => stun.id === student.id ? { ...stun, ...data } : stun);
+        const temp = this.students.map((stun) =>
+          stun.id === student.id ? { ...stun, ...data } : stun
+        );
         console.log(temp);
       }
-    })
+    });
   }
 
   ngOnInit(): void {}

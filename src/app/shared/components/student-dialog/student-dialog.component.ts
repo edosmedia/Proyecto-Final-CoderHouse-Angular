@@ -9,20 +9,20 @@ import { Student } from 'src/app/models/student.model';
   styles: [],
 })
 export class StudentDialogComponent implements OnInit {
-  public titulo = "Agregar Estudiante"
+  titulo: string;
   firstNameControl = new FormControl('');
   lastNameControl = new FormControl('');
   studentForm = new FormGroup({
     firstName: this.firstNameControl,
     lastName: this.lastNameControl,
   });
-  static titulo: any;
+
   constructor(
     private readonly dialogRef: MatDialogRef<StudentDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Student | null
   ) {
+    this.titulo;
     if (data) {
-
       this.studentForm.patchValue(data);
     }
     console.log(data);

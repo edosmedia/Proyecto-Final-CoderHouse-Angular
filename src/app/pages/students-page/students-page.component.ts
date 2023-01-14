@@ -34,6 +34,7 @@ export class StudentsPageComponent implements OnInit {
 
   constructor(private readonly dialogService: MatDialog) {}
 
+
   addStudent() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
@@ -80,7 +81,9 @@ export class StudentsPageComponent implements OnInit {
     dialog.afterClosed().subscribe((data) => {
       if (data) {
         // console.log(data)
-        this.students = this.students.map((stun) => stun.id === student.id ? {...stun, ...data }: stun)
+        this.students = this.students.map((stun) =>
+          stun.id === student.id ? { ...stun, ...data } : stun
+        );
         // const temp = this.students.map((stun) => stun.id === student.id ? { ...stun, ...data } : stun);
         // console.log(temp);
       }

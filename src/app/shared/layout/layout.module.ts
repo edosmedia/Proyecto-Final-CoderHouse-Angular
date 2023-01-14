@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { AngularMaterialModule } from '../modules/angular-material/angular-material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,7 +16,8 @@ import { AngularMaterialModule } from '../modules/angular-material/angular-mater
   ],
   imports: [
     CommonModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    HttpClientModule,
   ],
   exports: [
     HeaderComponent,

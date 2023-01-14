@@ -3,3 +3,18 @@ nav ul li {
   font-size: 1rem;
   padding: 10px;
 }
+#widget_clima {
+  padding: 20px;
+}
+#widget_clima h3:first-child {
+  font-weight:600;
+  font-size: 1.2rem;
+}
+#widget_clima .temperatura, .ciudad {
+  width: 50%;
+}
+
+#widget_clima div div:first-child {
+  font-weight: 300;
+  font-size: 1rem;
+}

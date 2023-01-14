@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClimaService } from '../../../services/clima.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
+  climaHoy: any;
 
-  constructor() { }
+  constructor(public climaservice: ClimaService ) {
+
+    this.climaservice.getClima('Santiago').subscribe(res => {
+      return this.climaHoy = res;
+    });
+   }
 
   ngOnInit(): void {
+
   }
 
 }

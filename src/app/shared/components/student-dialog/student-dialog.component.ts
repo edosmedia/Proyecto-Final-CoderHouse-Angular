@@ -1,7 +1,9 @@
+import { state } from '@angular/animations';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Student } from 'src/app/models/student.model';
+import { __values } from 'tslib';
 
 
 @Component({
@@ -10,12 +12,22 @@ import { Student } from 'src/app/models/student.model';
   styles: [],
 })
 export class StudentDialogComponent implements OnInit {
+  states= [{ value: true, viewValue: 'Activo' }, { value: false, viewValue: 'Inactivo' }]
   titulo: string;
   firstNameControl = new FormControl('');
   lastNameControl = new FormControl('');
+  cityControl = new FormControl('');
+  countryControl = new FormControl('');
+  andressControl = new FormControl('');
+  stateControl = new FormControl();
+
   studentForm = new FormGroup({
     firstName: this.firstNameControl,
     lastName: this.lastNameControl,
+    city: this.cityControl,
+    country: this.countryControl,
+    andress: this.andressControl,
+    state: this.stateControl,
   });
 
   constructor(

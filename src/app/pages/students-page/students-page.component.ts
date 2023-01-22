@@ -3,6 +3,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { Student } from '../../models/student.model';
 import { StudentDialogComponent } from '../../shared/components/student-dialog/student-dialog.component';
+import { StudentsService } from '../../services/students.service';
+import { Observable, Subject, BehaviorSubject, map } from 'rxjs';
 
 @Component({
   selector: 'app-students-page',
@@ -10,18 +12,20 @@ import { StudentDialogComponent } from '../../shared/components/student-dialog/s
   styleUrls: ['./students-page.component.scss'],
 })
 export class StudentsPageComponent implements OnInit {
-  students: Student[] = [
-    new Student(1, 'Marvelys', 'Medrano', true),
-    new Student(2, 'Eduardo', 'Medrano', true),
-    new Student(3, 'Laura', 'Piedra', true),
-    new Student(4, 'Cesar', 'Ali', false),
-    new Student(5, 'David', 'Badell', true),
-    new Student(6, 'Robert', 'Ramos', false),
-    new Student(7, 'German', 'Rosa', true),
-    new Student(8, 'Luis', 'Medrano', true),
-    new Student(9, 'Miguel', 'Medrano', true),
-    new Student(10, 'Dessire', 'Rosa', false),
-  ];
+  // students: Student[] = [
+  //   new Student(1, 'Marvelys', 'Medrano', true),
+  //   new Student(2, 'Eduardo', 'Medrano', true),
+  //   new Student(3, 'Laura', 'Piedra', true),
+  //   new Student(4, 'Cesar', 'Ali', false),
+  //   new Student(5, 'David', 'Badell', true),
+  //   new Student(6, 'Robert', 'Ramos', false),
+  //   new Student(7, 'German', 'Rosa', true),
+  //   new Student(8, 'Luis', 'Medrano', true),
+  //   new Student(9, 'Miguel', 'Medrano', true),
+  //   new Student(10, 'Dessire', 'Rosa', false),
+  // ];
+
+  students: Student[]
 
   displayedColumns = [
     'id',
@@ -32,10 +36,17 @@ export class StudentsPageComponent implements OnInit {
     'delete',
   ];
 
-  constructor(private readonly dialogService: MatDialog) {}
+  constructor(private readonly dialogService: MatDialog, private studentService: StudentsService) {
 
+    this.studentService.getStundents().subscribe(data => {
+      this.students = data
+    })
+  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
-  addStudent() {
+  addStudent(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       titulo: 'Agregar Nuevo Estudiante',
@@ -52,7 +63,8 @@ export class StudentsPageComponent implements OnInit {
         // this.students.push(new Student(lastId + 1, value.firstName, value.lastName, true ))
         this.students = [
           ...this.students,
-          new Student(lastId + 1, value.firstName, value.lastName, true),
+          new Student(lastId + 1, value.firstName, value.lastName, "", value.city ||
+            "", value.country || "", value.address || "", true),
         ];
       }
     });
@@ -71,6 +83,10 @@ export class StudentsPageComponent implements OnInit {
       titulo: 'Editar Estudiante',
       firstName: student.firstName,
       lastName: student.lastName,
+      city: student.city,
+      country: student.country,
+      andress: student.andress,
+      state: student.state
     };
     dialogConfig.width = '500px';
     const dialog = this.dialogService.open(
@@ -89,6 +105,6 @@ export class StudentsPageComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit(): void {}
 }
+
+

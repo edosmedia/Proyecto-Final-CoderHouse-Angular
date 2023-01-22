@@ -4,6 +4,10 @@ export class Student {
     public id: number,
     public firstName: string,
     public lastName: string,
-    public isActive: boolean
+    public city: string,
+    public country: string,
+    public andress: string,
+    public imageAvatar: string,
+    public state: boolean
   ){}
 }

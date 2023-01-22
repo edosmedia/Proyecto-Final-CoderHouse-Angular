@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsPageComponent } from './pages/students-page/students-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { DashboardLayoutComponent } from './Layouts/dashboard-layout/dashboard-layout.component';
+import { LayoutsModule } from './Layouts/layouts.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +19,8 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     SharedModule,
     PagesModule,
+    LayoutsModule,
+    AppRoutingModule
   ],
   exports: [
     SharedModule

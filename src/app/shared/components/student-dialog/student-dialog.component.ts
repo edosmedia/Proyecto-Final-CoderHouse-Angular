@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Student } from 'src/app/models/student.model';
-import { __values } from 'tslib';
+
 
 
 @Component({
@@ -12,14 +12,14 @@ import { __values } from 'tslib';
   styles: [],
 })
 export class StudentDialogComponent implements OnInit {
-  states= [{ value: true, viewValue: 'Activo' }, { value: false, viewValue: 'Inactivo' }]
+  status: Boolean = false;
   titulo: string;
   firstNameControl = new FormControl('');
   lastNameControl = new FormControl('');
   cityControl = new FormControl('');
   countryControl = new FormControl('');
   andressControl = new FormControl('');
-  stateControl = new FormControl();
+  stateControl = new FormControl(this.status);
 
   studentForm = new FormGroup({
     firstName: this.firstNameControl,
@@ -30,10 +30,9 @@ export class StudentDialogComponent implements OnInit {
     state: this.stateControl,
   });
 
-  constructor(
-    private readonly dialogRef: MatDialogRef<StudentDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Student | undefined
-  ) {
+  constructor(private readonly dialogRef: MatDialogRef<StudentDialogComponent>, @Inject(MAT_DIALOG_DATA)
+   public data: Student | undefined) {
+
     this.titulo = data!.titulo;
     if (data) {
       this.studentForm.patchValue(data);
@@ -45,7 +44,9 @@ export class StudentDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  save() {}
+  save() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 }

@@ -4,10 +4,12 @@ import { StudentDialogComponent } from './components/student-dialog/student-dial
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from './layout/layout.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
-    StudentDialogComponent
+    StudentDialogComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -18,6 +20,7 @@ import { LayoutModule } from './layout/layout.module';
   exports: [
     AngularMaterialModule,
     StudentDialogComponent,
+    ReactiveFormsModule,
     LayoutModule],
 })
 export class SharedModule {}

@@ -1,0 +1,29 @@
+<!-- Comienza Header -->
+<app-header opened></app-header>
+<!-- END Header  -->
+
+
+<!-- Comienza Contenedor de SideNav con el Contenido  -->
+<mat-sidenav-container>
+
+  <!-- SideNav -->
+  <mat-sidenav mode="side" #sidenav [opened]="isOpen">
+    <app-sidenav>
+    </app-sidenav>
+  </mat-sidenav>
+  <!-- END SideNav -->
+
+  <!-- Contenido  -->
+  <mat-sidenav-content>
+    <app-page-wrapper>
+      <router-outlet></router-outlet>
+      <!-- <app-students-page>
+      </app-students-page> -->
+    </app-page-wrapper>
+    <!-- <button mat-button (click)="opened=!opened">botos</button> -->
+  </mat-sidenav-content>
+  <!-- END Contenido  -->
+
+
+</mat-sidenav-container>
+<!-- END Contenedor de SideNav con el Contenido -->

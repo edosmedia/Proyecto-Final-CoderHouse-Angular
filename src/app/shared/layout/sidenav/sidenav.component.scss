@@ -3,6 +3,21 @@ nav ul li {
   font-size: 1rem;
   padding: 10px;
 }
+
+nav li a {
+    list-style: none;
+    color: unset;
+    text-decoration: none;
+    transition: all 5s ease;
+    -webkit-transition: all 5s ease;
+    -moz-transition: all 5s ease;
+    -ms-transition: all 5s ease;
+    -o-transition: all 5s ease;
+}
+nav li a:hover {
+
+  text-decoration: underline 5px;
+}
 #widget_clima {
   padding: 20px;
 }

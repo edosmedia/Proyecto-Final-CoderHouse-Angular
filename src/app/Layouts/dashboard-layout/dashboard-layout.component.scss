@@ -1,0 +1,19 @@
+
+// SideNav + Contenido
+
+mat-sidenav-container {
+  height: calc(100vh - 120px);
+  // border: 1px solid #555;
+}
+mat-sidenav {
+width: 300px;
+  background-color: #283341;
+}
+mat-sidenav-content {
+ padding: 20px;
+  background-color: rgb(238, 238, 238);
+  color: #283341;;
+
+}
+
+// END SideNav + Contenido

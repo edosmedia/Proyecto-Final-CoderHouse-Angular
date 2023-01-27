@@ -1,10 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Title } from '@angular/platform-browser';
 import { Student } from '../../models/student.model';
 import { StudentDialogComponent } from '../../shared/components/student-dialog/student-dialog.component';
 import { StudentsService } from '../../services/students.service';
-import { Observable, Subject, BehaviorSubject, map, async } from 'rxjs';
 
 @Component({
   selector: 'app-students-page',

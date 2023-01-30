@@ -28,6 +28,7 @@ export class StudentsPageComponent implements OnInit {
   students: Student[]
 
   displayedColumns = [
+    'imageAvatar',
     'firstName',
     'lastName',
     'isActive',
@@ -83,9 +84,10 @@ export class StudentsPageComponent implements OnInit {
       titulo: 'Editar Estudiante',
       firstName: student.firstName,
       lastName: student.lastName,
+      email: student.email,
       city: student.city,
       country: student.country,
-      andress: student.andress,
+      andress: student.address,
       state: student.state
     };
     console.log(student + "con")

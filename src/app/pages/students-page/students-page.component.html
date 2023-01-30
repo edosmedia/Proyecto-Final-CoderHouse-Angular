@@ -12,6 +12,11 @@
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
       </ng-container>
 
+          <ng-container matColumnDef="imageAvatar">
+            <th mat-header-cell *matHeaderCellDef> Foto</th>
+            <td id="imagen" mat-cell *matCellDef="let element"> <img src="{{element.imageAvatar}}" alt="{{element.firstName}}" > </td>
+          </ng-container>
+
       <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef> Nombre </th>
         <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>

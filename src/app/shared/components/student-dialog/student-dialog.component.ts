@@ -16,6 +16,7 @@ export class StudentDialogComponent implements OnInit {
   titulo: string;
   firstNameControl = new FormControl('');
   lastNameControl = new FormControl('');
+  emailControl = new FormControl('');
   cityControl = new FormControl('');
   countryControl = new FormControl('');
   andressControl = new FormControl('');
@@ -24,6 +25,7 @@ export class StudentDialogComponent implements OnInit {
   studentForm = new FormGroup({
     firstName: this.firstNameControl,
     lastName: this.lastNameControl,
+    email: this.emailControl,
     city: this.cityControl,
     country: this.countryControl,
     andress: this.andressControl,
@@ -43,8 +45,6 @@ export class StudentDialogComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
-
-  save() { }
 
   ngOnInit(): void {
 

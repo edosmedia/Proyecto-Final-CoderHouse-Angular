@@ -5,11 +5,15 @@
       <mat-label>Nombre</mat-label>
       <input [formControl]="firstNameControl" matInput placeholder="Nombre del Alumno">
       <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-      <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Apellido</mat-label>
       <input [formControl]="lastNameControl" matInput placeholder="Apellido del Alumno">
+      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input [formControl]="emailControl" matInput placeholder="Correo Electronico">
       <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
@@ -34,8 +38,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Estado</mat-label>
       <mat-select [formControl]="stateControl">
-        <mat-option value=true>Activado</mat-option>
-        <mat-option value=false>Inactivo</mat-option>
+        <mat-option value=true>true</mat-option>
+        <mat-option value=false>false</mat-option>
       </mat-select>
       <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
       <mat-hint>Hint</mat-hint>

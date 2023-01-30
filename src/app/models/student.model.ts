@@ -7,7 +7,7 @@ export class Student {
     public email: string,
     public city: string,
     public country: string,
-    public andress: string,
+    public address: string,
     public imageAvatar: string,
     public state: boolean
   ){}

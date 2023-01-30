@@ -12,6 +12,7 @@ import { Student } from 'src/app/models/student.model';
   styles: [],
 })
 export class StudentDialogComponent implements OnInit {
+
   status: Boolean = false;
   titulo: string;
   firstNameControl = new FormControl('');
@@ -20,7 +21,7 @@ export class StudentDialogComponent implements OnInit {
   cityControl = new FormControl('');
   countryControl = new FormControl('');
   andressControl = new FormControl('');
-  stateControl = new FormControl(this.status);
+  stateControl = new FormControl()
 
   studentForm = new FormGroup({
     firstName: this.firstNameControl,
@@ -47,6 +48,9 @@ export class StudentDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.stateControl.get('stateControl')?.setValue(false)
+
+   console.log(this.stateControl.value + " esto")
 
   }
 }

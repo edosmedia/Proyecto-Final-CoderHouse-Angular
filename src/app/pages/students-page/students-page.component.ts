@@ -90,7 +90,7 @@ export class StudentsPageComponent implements OnInit {
       andress: student.address,
       state: student.state
     };
-    console.log(student + "con")
+    console.log(student.state + "con")
     dialogConfig.width = '500px';
     const dialog = this.dialogService.open(
       StudentDialogComponent,
@@ -100,13 +100,13 @@ export class StudentsPageComponent implements OnInit {
     dialog.afterClosed().subscribe((data) => {
       console.log(data)
       if (data) {
-
+        console.log(data.state, + " dentro de la condicion")
         this.students = this.students.map((stun) =>
           stun.id === student.id ? { ...stun, ...data } : stun,
 
         );
-        const temp = this.students.map((stun) => stun.id === student.id ? { ...stun, ...data } : stun);
-        console.log(temp);
+        // const temp = this.students.map((stun) => stun.id === student.id ? { ...stun, ...data } : stun);
+        // console.log(temp);
       }
     });
   }

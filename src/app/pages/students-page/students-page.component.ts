@@ -3,6 +3,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Student } from '../../models/student.model';
 import { StudentDialogComponent } from '../../shared/components/student-dialog/student-dialog.component';
 import { StudentsService } from '../../services/students.service';
+import { state } from '@angular/animations';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-students-page',
@@ -26,7 +28,6 @@ export class StudentsPageComponent implements OnInit {
   students: Student[]
 
   displayedColumns = [
-    'id',
     'firstName',
     'lastName',
     'isActive',
@@ -34,9 +35,9 @@ export class StudentsPageComponent implements OnInit {
     'delete',
   ];
 
-  constructor(private readonly dialogService: MatDialog, private studentService: StudentsService) {
+  constructor(private readonly dialogService: MatDialog, private studentService: StudentsService, private firebaseservice : FirebaseService) {
 
-    this.studentService.getStundents().subscribe(dataApi => {
+    this.firebaseservice.getStundents().subscribe(dataApi => {
       this.students = dataApi;
 
     })
@@ -62,8 +63,8 @@ export class StudentsPageComponent implements OnInit {
         // this.students.push(new Student(lastId + 1, value.firstName, value.lastName, true ))
         this.students = [
           ...this.students,
-          new Student(lastId + 1, value.firstName, value.lastName, "", value.city ||
-            "", value.country || "", value.address || "", true),
+          new Student(lastId + 1, value.firstName, value.lastName, "", value.email, value.city ||
+            "", value.country || "", value.address || "", value.state),
         ];
       }
     });

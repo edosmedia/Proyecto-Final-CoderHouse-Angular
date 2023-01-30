@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "curso-angular-coderhouse": {
+      "hosting": {
+        "proyecto_final_angular_coderhouse": [
+          "curso-angular-coderhouse"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "curso-angular-coderhouse"
+  }
+}

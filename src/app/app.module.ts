@@ -4,23 +4,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StudentsPageComponent } from './pages/students-page/students-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
-import { DashboardLayoutComponent } from './Layouts/dashboard-layout/dashboard-layout.component';
 import { LayoutsModule } from './Layouts/layouts.module';
+import { FirestoreModule, provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    FirestoreModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     SharedModule,
-    PagesModule,
     LayoutsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
   ],
   exports: [
     SharedModule

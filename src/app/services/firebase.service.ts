@@ -16,6 +16,7 @@ export class FirebaseService {
     const studentRef = collection(this.firestore, 'alumnos')
     return addDoc(studentRef, student)
   }
+  // Eliminar Alumnos
    deleteStundents(student: Student) {
    const studenDoctRef = doc(this.firestore, `alumnos/${student.id}`);
      return deleteDoc(studenDoctRef)

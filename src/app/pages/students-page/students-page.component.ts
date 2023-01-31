@@ -48,7 +48,7 @@ export class StudentsPageComponent implements OnInit {
     // console.log(StudentDialogComponent.instance)
     dialog.afterClosed().subscribe((value) => {
       let student = {
-        imageAvatar: value.imageAvatar || "src/assets/image/avatar.png",
+        imageAvatar: value.imageAvatar || '../../../assets/image/avatar.png',
         firstName: value.firstName,
         lastName: value.lastName,
         email: value.email,
@@ -90,6 +90,7 @@ export class StudentsPageComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       titulo: 'Editar Estudiante',
+      imageAvatar: student.imageAvatar || '../../../assets/image/avatar.png',
       firstName: student.firstName,
       lastName: student.lastName,
       email: student.email,
@@ -108,6 +109,7 @@ export class StudentsPageComponent implements OnInit {
     dialog.afterClosed().subscribe((data) => {
       console.log(data)
       if (data) {
+        this.firebaseservice.postStundents(data)
         console.log(data.state, + " dentro de la condicion")
         this.students = this.students.map((stun) =>
           stun.id === student.id ? { ...stun, ...data } : stun,

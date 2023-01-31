@@ -60,10 +60,11 @@ export class StudentsPageComponent implements OnInit {
 
       value = student
 
+      console.log(value + "punto inter")
       if (value) {
         // const lastId = this.students[this.students.length - 1]?.id;
         console.log(value, "  Enviando a Firebase")
-        this.firebaseservice.postStundents(value).catch
+        this.firebaseservice.postStundents(value)
         // this.students.push(new Student(lastId + 1, value.firstName, value.lastName, true ))
         // this.students = [
         //   ...this.students,

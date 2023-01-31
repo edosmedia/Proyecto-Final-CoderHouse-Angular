@@ -12,18 +12,7 @@ import { FirebaseService } from '../../services/firebase.service';
   styleUrls: ['./students-page.component.scss'],
 })
 export class StudentsPageComponent implements OnInit {
-  // students: Student[] = [
-  //   new Student(1, 'Marvelys', 'Medrano', true),
-  //   new Student(2, 'Eduardo', 'Medrano', true),
-  //   new Student(3, 'Laura', 'Piedra', true),
-  //   new Student(4, 'Cesar', 'Ali', false),
-  //   new Student(5, 'David', 'Badell', true),
-  //   new Student(6, 'Robert', 'Ramos', false),
-  //   new Student(7, 'German', 'Rosa', true),
-  //   new Student(8, 'Luis', 'Medrano', true),
-  //   new Student(9, 'Miguel', 'Medrano', true),
-  //   new Student(10, 'Dessire', 'Rosa', false),
-  // ];
+
 
   students: Student[]
 
@@ -36,7 +25,7 @@ export class StudentsPageComponent implements OnInit {
     'delete',
   ];
 
-  constructor(private readonly dialogService: MatDialog, private studentService: StudentsService, private firebaseservice : FirebaseService) {
+  constructor(private readonly dialogService: MatDialog, private studentService: StudentsService, private firebaseservice: FirebaseService) {
 
     this.firebaseservice.getStundents().subscribe(dataApi => {
       this.students = dataApi;
@@ -58,24 +47,43 @@ export class StudentsPageComponent implements OnInit {
     ); // Para Abrir un Dialog
     // console.log(StudentDialogComponent.instance)
     dialog.afterClosed().subscribe((value) => {
+      let student = {
+        imageAvatar: value.imageAvatar || "src/assets/image/avatar.png",
+        firstName: value.firstName,
+        lastName: value.lastName,
+        email: value.email,
+        city: value.city || "",
+        country: value.country || "",
+        address: value.address || "",
+        state: value.state
+      };
+
+      value = student
       if (value) {
-        const lastId = this.students[this.students.length - 1]?.id;
-        console.log(this.students + "Funcion de add");
+        // const lastId = this.students[this.students.length - 1]?.id;
+        console.log(value + "Funcion de add");
+
+        console.log(value, "   valores")
+        this.firebaseservice.postStundents(value)
         // this.students.push(new Student(lastId + 1, value.firstName, value.lastName, true ))
-        this.students = [
-          ...this.students,
-          new Student(lastId + 1, value.firstName, value.lastName, "", value.email, value.city ||
-            "", value.country || "", value.address || "", value.state),
-        ];
+        // this.students = [
+        //   ...this.students,
+        //   new Student(lastId + 1, value.firstName, value.lastName, "", value.email, value.city ||
+        //     "", value.country || "", value.address || "", value.state),
+        // ];
+
       }
     });
   }
 
-  removeStudent(student: Student) {
+  async removeStudent(student: Student) {
     // Si el ID = 1
-    this.students = this.students.filter(
-      (stu) => stu.id !== student.id // Deja todo los Elementos menos el que se esta buscando donde se cumpla la condicion
-    );
+
+    const res = await this.firebaseservice.deleteStundents(student)
+    console.log(res)
+    // this.students = this.students.filter(
+    //   (stu) => stu.id !== student.id // Deja todo los Elementos menos el que se esta buscando donde se cumpla la condicion
+    // );
   }
 
   editStudent(student: Student) {

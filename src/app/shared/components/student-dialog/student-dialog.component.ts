@@ -15,6 +15,7 @@ export class StudentDialogComponent implements OnInit {
 
   status: Boolean = false;
   titulo: string;
+  imageAvatarControl = new FormControl('');
   firstNameControl = new FormControl('');
   lastNameControl = new FormControl('');
   emailControl = new FormControl('');
@@ -24,6 +25,7 @@ export class StudentDialogComponent implements OnInit {
   stateControl = new FormControl()
 
   studentForm = new FormGroup({
+    imageAvatar: this.imageAvatarControl,
     firstName: this.firstNameControl,
     lastName: this.lastNameControl,
     email: this.emailControl,

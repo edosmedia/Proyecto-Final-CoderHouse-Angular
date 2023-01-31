@@ -49,22 +49,21 @@ export class StudentsPageComponent implements OnInit {
     dialog.afterClosed().subscribe((value) => {
       let student = {
         imageAvatar: value.imageAvatar || '../../../assets/image/avatar.png',
+        andress: value.andress,
         firstName: value.firstName,
         lastName: value.lastName,
         email: value.email,
         city: value.city || "",
         country: value.country || "",
-        address: value.address || "",
-        state: value.state
+        state: value.state,
       };
 
       value = student
+
       if (value) {
         // const lastId = this.students[this.students.length - 1]?.id;
-        console.log(value + "Funcion de add");
-
-        console.log(value, "   valores")
-        this.firebaseservice.postStundents(value)
+        console.log(value, "  Enviando a Firebase")
+        this.firebaseservice.postStundents(value).catch
         // this.students.push(new Student(lastId + 1, value.firstName, value.lastName, true ))
         // this.students = [
         //   ...this.students,
@@ -109,7 +108,7 @@ export class StudentsPageComponent implements OnInit {
     dialog.afterClosed().subscribe((data) => {
       console.log(data)
       if (data) {
-        this.firebaseservice.postStundents(data)
+        this.firebaseservice.editStundents(data)
         console.log(data.state, + " dentro de la condicion")
         this.students = this.students.map((stun) =>
           stun.id === student.id ? { ...stun, ...data } : stun,

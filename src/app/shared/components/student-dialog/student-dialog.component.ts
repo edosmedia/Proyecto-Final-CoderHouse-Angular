@@ -22,7 +22,7 @@ export class StudentDialogComponent implements OnInit {
   cityControl = new FormControl('');
   countryControl = new FormControl('');
   andressControl = new FormControl('');
-  stateControl = new FormControl()
+  stateControl = new FormControl();
 
   studentForm = new FormGroup({
     imageAvatar: this.imageAvatarControl,

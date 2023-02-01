@@ -33,8 +33,10 @@ export class StudentsPageComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
   }
+
+
 
   addStudent(): void {
     const dialogConfig = new MatDialogConfig();
@@ -49,12 +51,12 @@ export class StudentsPageComponent implements OnInit {
     dialog.afterClosed().subscribe((value) => {
       let student = {
         imageAvatar: value.imageAvatar || '../../../assets/image/avatar.png',
-        address: value.address,
         firstName: value.firstName,
         lastName: value.lastName,
         email: value.email,
-        city: value.city || "",
         country: value.country || "",
+        city: value.city || "",
+        address: value.address,
         state: value.state,
       };
 
@@ -100,7 +102,7 @@ export class StudentsPageComponent implements OnInit {
       state: student.state
     };
     console.log(student.state + "con")
-    dialogConfig.width = '500px';
+    dialogConfig.width = '960px';
     const dialog = this.dialogService.open(
       StudentDialogComponent,
       dialogConfig

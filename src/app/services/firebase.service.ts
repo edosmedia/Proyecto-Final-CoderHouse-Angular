@@ -4,6 +4,7 @@ import { collection, collectionData, Firestore, addDoc, deleteDoc, doc, updateDo
 import { Student } from '../models/student.model';
 import { Observable } from '@firebase/util';
 import { Subject } from '../models/subject.model';
+import { Matriculados } from '../models/matriculados.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class FirebaseService {
 
 
   constructor(private firestore: Firestore) { }
+  getMatriculados() {
+    const studentRef = collection(this.firestore, 'matriculados')
+    return collectionData(studentRef, { idField: 'id' }) as unknown as  Observable<any>
+  }
   // Crear Alumnos
   postStundents(student: Student) {
     const studentRef = collection(this.firestore, 'alumnos')

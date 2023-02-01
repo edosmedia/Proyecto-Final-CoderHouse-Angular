@@ -11,13 +11,13 @@ export class DashboardPageComponent implements OnInit {
   constructor(private FirebaseService: FirebaseService ) { }
 
   ngOnInit(): void {
-    this.FirebaseService.getSubjects().subscribe(student => {
-      console.log(student)
+    this.FirebaseService.getMatriculados().subscribe(matriculados => {
+      console.log(matriculados)
     })
 
-    this.FirebaseService.getUsers().subscribe(student => {
-      console.log(student)
-    })
+    // this.FirebaseService.getUsers().subscribe(student => {
+    //   console.log(student)
+    // })
   }
 
 }

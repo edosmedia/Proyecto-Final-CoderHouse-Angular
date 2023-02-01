@@ -49,7 +49,7 @@ export class StudentsPageComponent implements OnInit {
     dialog.afterClosed().subscribe((value) => {
       let student = {
         imageAvatar: value.imageAvatar || '../../../assets/image/avatar.png',
-        andress: value.andress,
+        address: value.address,
         firstName: value.firstName,
         lastName: value.lastName,
         email: value.email,
@@ -62,9 +62,9 @@ export class StudentsPageComponent implements OnInit {
 
       console.log(value + "punto inter")
       if (value) {
-        // const lastId = this.students[this.students.length - 1]?.id;
         console.log(value, "  Enviando a Firebase")
         this.firebaseservice.postStundents(value)
+        // const lastId = this.students[this.students.length - 1]?.id;
         // this.students.push(new Student(lastId + 1, value.firstName, value.lastName, true ))
         // this.students = [
         //   ...this.students,
@@ -96,7 +96,7 @@ export class StudentsPageComponent implements OnInit {
       email: student.email,
       city: student.city,
       country: student.country,
-      andress: student.address,
+      address: student.address,
       state: student.state
     };
     console.log(student.state + "con")

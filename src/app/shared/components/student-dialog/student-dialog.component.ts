@@ -21,7 +21,7 @@ export class StudentDialogComponent implements OnInit {
   emailControl = new FormControl('');
   cityControl = new FormControl('');
   countryControl = new FormControl('');
-  andressControl = new FormControl('');
+  addressControl = new FormControl('');
   stateControl = new FormControl();
 
   studentForm = new FormGroup({
@@ -31,7 +31,7 @@ export class StudentDialogComponent implements OnInit {
     email: this.emailControl,
     city: this.cityControl,
     country: this.countryControl,
-    andress: this.andressControl,
+    address: this.addressControl,
     state: this.stateControl,
   });
 

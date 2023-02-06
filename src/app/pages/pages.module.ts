@@ -7,6 +7,7 @@ import { SubjectsComponent } from './subjects/subjects.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -16,7 +17,8 @@ import { ContactsComponent } from './contacts/contacts.component';
     SubjectsComponent,
     LoginPageComponent,
     DashboardPageComponent,
-    ContactsComponent
+    ContactsComponent,
+    UsersComponent
   ],
   imports: [
      CommonModule,

@@ -8,6 +8,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+import { EnrolledComponent } from './pages/enrolled/enrolled.component';
+import { UsersComponent } from './pages/users/users.component';
 
 const routes: Routes = [
   {
@@ -25,6 +27,14 @@ const routes: Routes = [
       {
         path: 'materias',
         component: SubjectsComponent
+      },
+      {
+        path: 'usuarios',
+        component: UsersComponent
+      },
+      {
+        path: 'matriculados',
+        component: EnrolledComponent
       },
       {
         path: 'contacto',

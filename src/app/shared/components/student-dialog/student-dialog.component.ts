@@ -13,7 +13,7 @@ import { Student } from 'src/app/models/student.model';
 })
 export class StudentDialogComponent implements OnInit {
 
-  status: Boolean = false;
+  // status: Boolean = false;
   titulo: string;
   imageAvatarControl = new FormControl('');
   firstNameControl = new FormControl('');
@@ -52,7 +52,7 @@ export class StudentDialogComponent implements OnInit {
   ngOnInit(): void {
     this.stateControl.get('stateControl')?.setValue(false)
 
-   console.log(this.stateControl.value + " esto")
+  //  console.log(this.stateControl.value + " esto")
 
   }
 }

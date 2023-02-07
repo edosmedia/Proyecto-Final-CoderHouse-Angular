@@ -2,16 +2,21 @@ import { SubjectsComponent } from './../pages/subjects/subjects.component';
 import { EnrolledComponent } from './../pages/enrolled/enrolled.component';
 import { observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { collection, collectionData, Firestore, addDoc, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
+import { collection, collectionData, Firestore, addDoc, deleteDoc, doc, updateDoc, getFirestore } from '@angular/fire/firestore';
 import { Student } from '../models/student.model';
 import { Observable } from '@firebase/util';
 import { Subject } from '../models/subject.model';
 import { Matriculados } from '../models/matriculados.model';
+import { setDoc } from '@firebase/firestore';
+import { environment } from '../../environments/environment.prod';
+import { initializeApp } from '@angular/fire/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
+  db = this.firestore;
+  constructor(private firestore: Firestore) { }
 // -----------------------------------------------------------------------------------------------//
 // Stundent Working
   // Obtener Alumnos
@@ -30,9 +35,22 @@ export class FirebaseService {
     return deleteDoc(studenDoctRef)
   }
  // Editar Alumnos (No Woking)
-  editStundents(student: Student) {
-    const studenDoctRef = doc(this.firestore, `alumnos/${student.id}`);
-    return updateDoc(studenDoctRef, { student })
+  async editStundents(student: any, id:any) {
+    // const app = initializeApp(environment.firebase)
+    // const db = getFirestore(app);
+    const studenDoctRef = doc(this.db, 'alumnos', id);
+    console.log(studenDoctRef + "registro")
+    await updateDoc(studenDoctRef, {
+      imageAvatar: student.imageAvatar,
+      firstName: student.firstName,
+      lastName: student.lastName,
+      email: student.email,
+      city: student.city,
+      country: student.country,
+      address: student.address,
+      state: student.state
+    })
+
   }
 // -----------------------------------------------------------------------------------------------//
 
@@ -57,7 +75,6 @@ export class FirebaseService {
 
 
 
-  constructor(private firestore: Firestore) { }
 
 
 

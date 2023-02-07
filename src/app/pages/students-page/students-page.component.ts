@@ -29,6 +29,7 @@ export class StudentsPageComponent implements OnInit {
 
     this.firebaseservice.getStundents().subscribe(dataApi => {
       this.students = dataApi;
+      console.log(this.students)
 
     })
   }
@@ -50,6 +51,7 @@ export class StudentsPageComponent implements OnInit {
     // console.log(StudentDialogComponent.instance)
     dialog.afterClosed().subscribe((value) => {
       let student = {
+        id : value.id,
         imageAvatar: value.imageAvatar || '../../../assets/image/avatar.png',
         firstName: value.firstName,
         lastName: value.lastName,
@@ -109,14 +111,16 @@ export class StudentsPageComponent implements OnInit {
     ); // Para Abrir un Dialog
 
     dialog.afterClosed().subscribe((data) => {
-      console.log(data)
+      // console.log(data)
       if (data) {
-        this.firebaseservice.editStundents(data)
-        console.log(data.state, + " dentro de la condicion")
-        this.students = this.students.map((stun) =>
+                this.students = this.students.map((stun) =>
           stun.id === student.id ? { ...stun, ...data } : stun,
 
         );
+        console.log(data, this.students, + " dentro de la condicion")
+        this.firebaseservice.editStundents(data, data.id)
+        console.log(this.firebaseservice.editStundents(data, student.id))
+
         // const temp = this.students.map((stun) => stun.id === student.id ? { ...stun, ...data } : stun);
         // console.log(temp);
       }

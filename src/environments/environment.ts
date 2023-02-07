@@ -12,7 +12,7 @@ export const environment = {
     authDomain: 'curso-angular-coderhouse.firebaseapp.com',
     messagingSenderId: '610164664695',
   },
-  production: false
+  production: true
 };
 
 /*

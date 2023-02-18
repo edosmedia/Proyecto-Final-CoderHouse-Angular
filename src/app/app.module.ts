@@ -17,6 +17,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     FirestoreModule,
     AppRoutingModule,
+    PagesModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     SharedModule,

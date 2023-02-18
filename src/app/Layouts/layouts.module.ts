@@ -4,6 +4,7 @@ import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.co
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { CleanLayoutComponent } from './clean-layout/clean-layout.component';
+import { LoginModule } from '../pages/login-page/login.module';
 
 
 
@@ -15,7 +16,8 @@ import { CleanLayoutComponent } from './clean-layout/clean-layout.component';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    LoginModule,
   ],
 
 })

@@ -10,12 +10,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [],
   imports: [CommonModule],
   exports: [
     MatTableModule,
+    MatCardModule,
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,

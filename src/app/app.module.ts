@@ -23,7 +23,7 @@ import { environment } from '../environments/environment';
     LayoutsModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
   ],
   exports: [
     SharedModule

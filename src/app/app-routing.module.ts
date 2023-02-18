@@ -1,52 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './Layouts/dashboard-layout/dashboard-layout.component';
-import { StudentsPageComponent } from './pages/students-page/students-page.component';
-import { SubjectsComponent } from './pages/subjects/subjects.component';
 import { CleanLayoutComponent } from './Layouts/clean-layout/clean-layout.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
-import { EnrolledComponent } from './pages/enrolled/enrolled.component';
-import { UsersComponent } from './pages/users/users.component';
+
 
 const routes: Routes = [
-  {
-    path: '',
-    component: DashboardLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: DashboardPageComponent
-      },
-      {
-        path: 'estudiantes',
-        component: StudentsPageComponent
-      },
-      {
-        path: 'materias',
-        component: SubjectsComponent
-      },
-      {
-        path: 'usuarios',
-        component: UsersComponent
-      },
-      {
-        path: 'matriculados',
-        component: EnrolledComponent
-      },
-      {
-        path: 'contacto',
-        component: ContactsComponent
-      },
-      {
-        path: '**',
-        redirectTo: 'login'
-      }
-
-    ]
-  },
   {
     path: 'auth',
     component: CleanLayoutComponent,
@@ -58,10 +19,54 @@ const routes: Routes = [
       {
         path: '**',
         component: NotFoundComponent,
-        // redirectTo: 'login'
+        redirectTo: 'login'
       }
     ]
-  }
+  },
+  {
+    path: '',
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path: 'estudiantes',
+        loadChildren: () => import ('./pages/students-page/students.module').then(m => m.StudentsModule),
+        data: {
+          nombre: 'Estudiantes'
+        }
+      },
+      {
+        path: 'materias',
+        loadChildren: () => import('./pages/subjects/subjects.module').then(m => m.SubjectsModule),
+        data: {
+          nombre: 'Materias'
+        }
+      },
+      {
+        path: 'usuarios',
+        loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule),
+        data: {
+          nombre: 'Usuarios'
+        }
+      },
+      {
+        path: 'matriculados',
+        loadChildren: () => import('./pages/enrolled/enrolled.module').then(m => m.EnrolledModule),
+        data: {
+          nombre: 'Matriculados'
+        }
+      },
+      {
+        path: 'contacto',
+        component: ContactsComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'auth/login'
+      }
+
+    ]
+  },
+
 ];
 
 @NgModule({

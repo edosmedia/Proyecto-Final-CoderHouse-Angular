@@ -5,7 +5,7 @@ export class Matriculados {
   constructor(
     public id: number,
     public name: any,
-    public Cursos: any,
+    public cursos: any,
     public state: boolean
   ){}
 }

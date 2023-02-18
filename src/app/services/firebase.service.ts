@@ -1,15 +1,15 @@
 import { SubjectsComponent } from './../pages/subjects/subjects.component';
 import { EnrolledComponent } from './../pages/enrolled/enrolled.component';
-import { observable } from 'rxjs';
+import { Observable, observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { collection, collectionData, Firestore, addDoc, deleteDoc, doc, updateDoc, getFirestore } from '@angular/fire/firestore';
+import { collection, collectionData, Firestore, addDoc, deleteDoc, doc, updateDoc, getFirestore, where, query, getDocs, getDoc } from '@angular/fire/firestore';
 import { Student } from '../models/student.model';
-import { Observable } from '@firebase/util';
 import { Subject } from '../models/subject.model';
 import { Matriculados } from '../models/matriculados.model';
 import { setDoc } from '@firebase/firestore';
 import { environment } from '../../environments/environment.prod';
 import { initializeApp } from '@angular/fire/app';
+import { Users } from '../models/users.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +17,45 @@ import { initializeApp } from '@angular/fire/app';
 export class FirebaseService {
   db = this.firestore;
   constructor(private firestore: Firestore) { }
-// -----------------------------------------------------------------------------------------------//
-// Stundent Working
+  // -----------------------------------------------------------------------------------------------//
+  // Stundent Working
   // Obtener Alumnos
   getStundents() {
     const studentRef = collection(this.firestore, 'alumnos')
     return collectionData(studentRef, { idField: 'id' }) as unknown as Observable<Student[]>
   }
+
+  getStundents2() {
+    const studentRef = collection(this.firestore, 'alumnos')
+    return collectionData(studentRef, { idField: 'id' }) as unknown as Observable<Student[]>
+  }
+  // Obtener Alumno
+  // async getStundent() {
+  //   const studentRef = collection(this.firestore, 'alumnos')
+  //   // const q = query(studentRef, where("id", "==", "6ERN0Llv7DlktnJjGcnP"))
+  //   return studentRef.doc("6ERN0Llv7DlktnJjGcnP").collection('alumnos') as unknown as Observable<any>
+  // }
+  async getAlumnoById(id: string): Promise<any> {
+    const alumnoRef = doc(collection(this.firestore, 'alumnos'), id);
+    const alumnoSnap = await getDoc(alumnoRef);
+    if (alumnoSnap.exists()) {
+      return { id: alumnoSnap.id, ...alumnoSnap.data() };
+    } else {
+      return null;
+    }
+  }
+
+  async getCursoById(id: string): Promise<any> {
+    const cursoRef = doc(collection(this.firestore, 'cursos'), id);
+    const cursoSnap = await getDoc(cursoRef);
+    if (cursoSnap.exists()) {
+      return { id: cursoSnap.id, ...cursoSnap.data() };
+    } else {
+      return null;
+    }
+  }
+
+
   // Crear Alumnos
   postStundents(student: Student) {
     const studentRef = collection(this.firestore, 'alumnos')
@@ -34,8 +66,8 @@ export class FirebaseService {
     const studenDoctRef = doc(this.firestore, `alumnos/${student.id}`);
     return deleteDoc(studenDoctRef)
   }
- // Editar Alumnos (No Woking)
-  async editStundents(student: any, id:any) {
+  // Editar Alumnos (No Woking)
+  async editStundents(student: any, id: any) {
     // const app = initializeApp(environment.firebase)
     // const db = getFirestore(app);
     const studenDoctRef = doc(this.db, 'alumnos', id);
@@ -52,25 +84,33 @@ export class FirebaseService {
     })
 
   }
-// -----------------------------------------------------------------------------------------------//
+  // -----------------------------------------------------------------------------------------------//
 
 
-//EnrolledComponent Working
- // Obtener Matriculados
+  //EnrolledComponent Working
+  // Obtener Matriculados
   getMatriculados() {
     const studentRef = collection(this.firestore, 'matriculados')
     return collectionData(studentRef, { idField: 'id' }) as unknown as Observable<any>
   }
 
-// -----------------------------------------------------------------------------------------------//
+  // -----------------------------------------------------------------------------------------------//
 
-// SubjectsComponent
+  // SubjectsComponent
   // Obtener Cursos
   getSubjects(): Observable<Subject[]> {
     const studentRef = collection(this.firestore, 'cursos')
     return collectionData(studentRef, { idField: 'id' }) as unknown as Observable<Subject[]>
   }
 
+  // -----------------------------------------------------------------------------------------------//
+
+  // Users Component
+  // Obtener Usuarios
+  getUsers(): Observable<Users[]> {
+    const usersRef = collection(this.firestore, 'usuarios')
+    return collectionData(usersRef, { idField: 'id' }) as unknown as Observable<Users[]>
+  }
 
 
 

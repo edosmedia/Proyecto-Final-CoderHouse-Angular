@@ -5,6 +5,7 @@ import { CleanLayoutComponent } from './Layouts/clean-layout/clean-layout.compon
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,13 @@ const routes: Routes = [
     path: '',
     component: DashboardLayoutComponent,
     children: [
+      {
+        path: '',
+        component: DashboardPageComponent,
+        data: {
+          nombre: 'Dashboard'
+        }
+      },
       {
         path: 'estudiantes',
         loadChildren: () => import ('./pages/students-page/students.module').then(m => m.StudentsModule),

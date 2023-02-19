@@ -25,16 +25,6 @@ export class FirebaseService {
     return collectionData(studentRef, { idField: 'id' }) as unknown as Observable<Student[]>
   }
 
-  getStundents2() {
-    const studentRef = collection(this.firestore, 'alumnos')
-    return collectionData(studentRef, { idField: 'id' }) as unknown as Observable<Student[]>
-  }
-  // Obtener Alumno
-  // async getStundent() {
-  //   const studentRef = collection(this.firestore, 'alumnos')
-  //   // const q = query(studentRef, where("id", "==", "6ERN0Llv7DlktnJjGcnP"))
-  //   return studentRef.doc("6ERN0Llv7DlktnJjGcnP").collection('alumnos') as unknown as Observable<any>
-  // }
   async getAlumnoById(id: string): Promise<any> {
     const alumnoRef = doc(collection(this.firestore, 'alumnos'), id);
     const alumnoSnap = await getDoc(alumnoRef);
@@ -45,15 +35,7 @@ export class FirebaseService {
     }
   }
 
-  async getCursoById(id: string): Promise<any> {
-    const cursoRef = doc(collection(this.firestore, 'cursos'), id);
-    const cursoSnap = await getDoc(cursoRef);
-    if (cursoSnap.exists()) {
-      return { id: cursoSnap.id, ...cursoSnap.data() };
-    } else {
-      return null;
-    }
-  }
+
 
 
   // Crear Alumnos
@@ -101,6 +83,16 @@ export class FirebaseService {
   getSubjects(): Observable<Subject[]> {
     const studentRef = collection(this.firestore, 'cursos')
     return collectionData(studentRef, { idField: 'id' }) as unknown as Observable<Subject[]>
+  }
+
+  async getCursoById(id: string): Promise<any> {
+    const cursoRef = doc(collection(this.firestore, 'cursos'), id);
+    const cursoSnap = await getDoc(cursoRef);
+    if (cursoSnap.exists()) {
+      return { id: cursoSnap.id, ...cursoSnap.data() };
+    } else {
+      return null;
+    }
   }
 
   // -----------------------------------------------------------------------------------------------//

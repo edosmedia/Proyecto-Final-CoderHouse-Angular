@@ -95,6 +95,11 @@ export class FirebaseService {
     }
   }
 
+  postSubject(subject: Subject) {
+    const subjectRef = collection(this.firestore, 'cursos')
+    return addDoc(subjectRef, subject)
+  }
+
   // -----------------------------------------------------------------------------------------------//
 
   // Users Component

@@ -3,7 +3,7 @@
     <h2>Cursos</h2>
   </div>
   <div class="col flex justify-content-end">
-    <button mat-raised-button color="primary">Agregar Materia</button>
+    <button (click)="addSubject()" mat-raised-button color="primary">Agregar Materia</button>
   </div>
   <div class="col-12">
     <table mat-table [dataSource]="subjects">

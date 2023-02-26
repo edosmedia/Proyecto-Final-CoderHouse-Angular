@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>{{titulo}}</h1>
+<div mat-dialog-content>
+  <form class="flex flex-column" [formGroup]="subjectForm">
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre de Curso</mat-label>
+      <input [formControl]="nameControl" matInput placeholder="Nombre del Curso">
+      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    </mat-form-field>
+
+    <mat-form-field  appearance="fill">
+      <mat-label>Descripcion del Curso</mat-label>
+      <textarea class="text-area" matInput [formControl]="descriptionControl" placeholder="Descripcion del Curso"  cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Precio del Curso</mat-label>
+      <input [formControl]="priceControl" matInput placeholder="Precio del Curso">
+      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Inicio del Curso</mat-label>
+      <input [formControl]="start_dateControl" matInput placeholder="Fecha de Comienzo del Curso">
+      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Fin de Curso</mat-label>
+      <input [formControl]="end_dateControl" matInput placeholder="Fecha de Finalizacion de Curso">
+      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Estado</mat-label>
+      <mat-select [formControl]="stateControl">
+        <mat-option [value]=true>Activado</mat-option>
+        <mat-option [value]=false>Inactivo</mat-option>
+      </mat-select>
+      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+
+
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="subjectForm.value" cdkFocusInitial>Guardar</button>
+</div>

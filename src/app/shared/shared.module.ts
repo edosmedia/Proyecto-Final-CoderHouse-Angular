@@ -5,10 +5,12 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from './layout/layout.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SubjectDialogComponent } from './components/subject-dialog/subject-dialog.component';
 
 @NgModule({
   declarations: [
     StudentDialogComponent,
+    SubjectDialogComponent,
     NotFoundComponent
   ],
   imports: [

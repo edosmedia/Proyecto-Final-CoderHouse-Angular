@@ -9,9 +9,9 @@ import { ClimaService } from '../../../services/clima.service';
 })
 export class SidenavComponent implements OnInit {
   climaHoy: any;
-  latitude: string | number;
-  longitude: string | number;
-  codernadas: number;
+  latitude: string | number | undefined;
+  longitude: string | number | undefined;
+  codernadas: number | undefined;
   resultado: any
 
   async ngOnInit(): Promise<void> {
@@ -24,11 +24,11 @@ export class SidenavComponent implements OnInit {
       return (this.codernadas = this.longitude);
     });
 
-    await console.log(this.resultado);
+
   }
 
   constructor(public climaservice: ClimaService) {
-    console.log(this.codernadas);
+    // console.log(this.codernadas);
     this.climaservice.getClima("Santiago", null, null).subscribe((res) => {
       return (this.climaHoy = res);
     });

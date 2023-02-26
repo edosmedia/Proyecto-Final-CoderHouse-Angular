@@ -34,7 +34,7 @@ export class ClimaService {
       // headers : headers;
       params: params,
     };
-    console.log('test' + options.params);
+    // console.log('test' + options.params);
     return this.http.get(`${this.baseURL}`, options);
   }
 }

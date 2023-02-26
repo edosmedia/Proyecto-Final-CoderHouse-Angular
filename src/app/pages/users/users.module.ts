@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { SharedModule } from '../../shared/shared.module';
@@ -11,18 +11,24 @@ const routes: Routes = [
   }
 ];
 
+console.log('Users module loaded');
 
 @NgModule({
   declarations: [
     UsersComponent,
   ],
   imports: [
+    RouterModule.forChild(routes),
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes)
   ],
   exports: [
     UsersComponent
   ]
 })
-export class UsersModule { }
+export class UsersModule  {
+
+  ngOnInit() {
+    console.log('Users2 module loaded');
+  }
+}

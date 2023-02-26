@@ -1,19 +1,54 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StudentsPageComponent } from './students-page/students-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { SubjectsComponent } from './subjects/subjects.component';
-import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { UsersComponent } from './users/users.component';
-import { StudentsModule } from './students-page/students.module';
-import { SubjectsModule } from './subjects/subjects.module';
 import { UsersModule } from './users/users.module';
-import { LoginModule } from './login-page/login.module';
-import { EnrolledModule } from './enrolled/enrolled.module';
+import { Routes, RouterModule } from '@angular/router';
+import { DashboardLayoutComponent } from '../Layouts/dashboard-layout/dashboard-layout.component';
 
+const routes: Routes = [
+  {
+    path: '',
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardPageComponent
+      },
+      {
+        path: 'usuarios',
+        loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+        data: {
+          nombre: 'Usuarios'
+        }
+      },
+      {
+        path: 'estudiantes',
+        loadChildren: () => import('./students-page/students.module').then(m => m.StudentsModule),
+      },
+      {
+        path: 'materias',
+        loadChildren: () => import('./subjects/subjects.module').then(m => m.SubjectsModule),
+        data: {
+          nombre: 'Materias'
+        }
+      },
+      {
+        path: 'matriculados',
+        loadChildren: () => import('./enrolled/enrolled.module').then(m => m.EnrolledModule),
+        data: {
+          nombre: 'Matriculados'
+        }
+      },
+      {
+        path: 'contacto',
+        component: ContactsComponent
+      }
+    ]
+  }
+]
 
 
 @NgModule({
@@ -23,16 +58,13 @@ import { EnrolledModule } from './enrolled/enrolled.module';
   ],
   imports: [
     CommonModule,
-     StudentsModule,
-     SubjectsModule,
-     EnrolledModule,
-     LoginModule,
-     UsersModule,
-     SharedModule,
-     HttpClientModule
-    ],
+    RouterModule.forChild(routes),
+    UsersModule,
+    SharedModule,
+    HttpClientModule
+  ],
   exports: [
 
   ],
 })
-export class PagesModule {}
+export class PagesModule { }

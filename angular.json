@@ -39,13 +39,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500mb",
-                  "maximumError": "500mb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "500mb",
-                  "maximumError": "500mb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ],
               "fileReplacements": [
@@ -56,14 +56,14 @@
               ],
               "outputHashing": "all"
             },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
+          "development": {
+            "buildOptimizer": false,
+            "optimization": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "sourceMap": true,
+            "namedChunks": true
+          }
           },
           "defaultConfiguration": "production"
         },
@@ -119,6 +119,9 @@
     }
   },
   "cli": {
-    "analytics": "8eebca60-3227-4719-aa12-433baba1a475"
+    "analytics": "8eebca60-3227-4719-aa12-433baba1a475",
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   }
 }

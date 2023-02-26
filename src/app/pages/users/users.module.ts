@@ -1,30 +1,30 @@
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsersComponent } from './users.component';
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+import { UsersComponent } from './users.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: UsersComponent
+    component: UsersComponent,
   }
-];
+]
 
-console.log('Users module loaded');
 
 @NgModule({
   declarations: [
     UsersComponent,
   ],
   imports: [
-    RouterModule.forChild(routes),
     CommonModule,
     SharedModule,
+    RouterModule.forChild(routes),
   ],
   exports: [
     UsersComponent
   ]
+
 })
 export class UsersModule  {
 

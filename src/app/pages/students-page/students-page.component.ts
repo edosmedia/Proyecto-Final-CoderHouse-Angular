@@ -51,7 +51,6 @@ export class StudentsPageComponent implements OnInit {
     // console.log(StudentDialogComponent.instance)
     dialog.afterClosed().subscribe((value) => {
       let student = {
-        id : value.id,
         imageAvatar: value.imageAvatar || '../../../assets/image/avatar.png',
         firstName: value.firstName,
         lastName: value.lastName,
@@ -68,13 +67,6 @@ export class StudentsPageComponent implements OnInit {
       if (value) {
         console.log(value, "  Enviando a Firebase")
         this.firebaseservice.postStundents(value)
-        // const lastId = this.students[this.students.length - 1]?.id;
-        // this.students.push(new Student(lastId + 1, value.firstName, value.lastName, true ))
-        // this.students = [
-        //   ...this.students,
-        //   new Student(lastId + 1, value.firstName, value.lastName, "", value.email, value.city ||
-        //     "", value.country || "", value.address || "", value.state),
-        // ];
 
       }
     });

@@ -8,31 +8,19 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'auth',
-  //   component: CleanLayoutComponent,
-  //   children: [
-  //     {
-  //       path: 'login',
-  //       component: LoginPageComponent
-  //     },
-  //     {
-  //       path: '**',
-  //       component: NotFoundComponent,
-  //       redirectTo: 'login'
-  //     }
-  //   ]
-  // },
+
   {
-    path: 'app',
+    path: '',
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
   },
   {
     path: 'login',
     loadChildren: () => import('./pages/login-page/login.module').then(m => m.LoginModule)
   },
-  {path: '**', redirectTo: '/app/dashboard'}
-
+  {
+    path: '**',
+    redirectTo: '/app/dashboard'
+  }
 ];
 
 @NgModule({

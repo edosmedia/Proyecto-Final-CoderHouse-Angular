@@ -14,15 +14,12 @@ const routes: Routes = [
     component: DashboardLayoutComponent,
     children: [
       {
-        path: 'dashboard',
+        path: '',
         component: DashboardPageComponent
       },
       {
         path: 'usuarios',
         loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
-        data: {
-          nombre: 'Usuarios'
-        }
       },
       {
         path: 'estudiantes',
@@ -54,12 +51,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     DashboardPageComponent,
-    ContactsComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    UsersModule,
     SharedModule,
     HttpClientModule
   ],

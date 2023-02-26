@@ -48,7 +48,7 @@ export class FirebaseService {
     const studenDoctRef = doc(this.firestore, `alumnos/${student.id}`);
     return deleteDoc(studenDoctRef)
   }
-  // Editar Alumnos (No Woking)
+  // Editar Alumnos (Woking)
   async editStundents(student: any, id: any) {
     // const app = initializeApp(environment.firebase)
     // const db = getFirestore(app);
@@ -98,6 +98,23 @@ export class FirebaseService {
   postSubject(subject: Subject) {
     const subjectRef = collection(this.firestore, 'cursos')
     return addDoc(subjectRef, subject)
+  }
+
+
+  async editSubject(subject: any, id: any) {
+    console.log(subject, "registro para firebase")
+    const subjectDoctRef = doc(this.firestore, 'cursos', id);
+    console.log(subjectDoctRef + "registro")
+    await updateDoc(subjectDoctRef, {
+      name: subject.name,
+      description: subject.description,
+      price: subject.price,
+      start_date : subject.start_date,
+      end_date : subject.end_date,
+      state: subject.state
+    })
+
+
   }
 
   // -----------------------------------------------------------------------------------------------//

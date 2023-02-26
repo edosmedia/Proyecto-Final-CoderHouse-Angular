@@ -11,7 +11,7 @@ import { SubjectDialogComponent } from '../../shared/components/subject-dialog/s
 })
 export class SubjectsComponent implements OnInit {
 
-  subjects : Subject[]
+  subjects: Subject[] = []
 
   displayedColumns = [
     'name',
@@ -22,11 +22,12 @@ export class SubjectsComponent implements OnInit {
 
   ];
 
-  constructor(private readonly dialogService : MatDialog, private firebaseservice : FirebaseService) {
+  constructor(private readonly dialogService: MatDialog, private firebaseservice: FirebaseService) {
     this.firebaseservice.getSubjects().subscribe(dataApi => {
       this.subjects = dataApi;
       console.log(this.subjects)
     })
+
   }
 
   addSubject() {
@@ -39,24 +40,61 @@ export class SubjectsComponent implements OnInit {
       SubjectDialogComponent,
       dialogConfig
     );
-      dialog.afterClosed().subscribe((value) => {
+    dialog.afterClosed().subscribe((value) => {
 
-        let subject = {
-          name: value.name,
-          description: value.description,
-          price: value.price,
-          start_date: value.start_date,
-          end_date: value.end_date,
-          state: value.state
-        };
+      let subject = {
+        name: value.name,
+        description: value.description,
+        price: value.price,
+        start_date: value.start_date,
+        end_date: value.end_date,
+        state: value.state
+      };
 
-        value = subject
+      value = subject
 
-        if(value) {
-          console.log(value, " Envio a Firebase")
-          this.firebaseservice.postSubject(value)
-        }
-      })
+      if (value) {
+        console.log(value, " Envio a Firebase")
+        this.firebaseservice.postSubject(value)
+      }
+    })
+
+  }
+
+  editSubject(value: Subject) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.width = '960px';
+
+    dialogConfig.data = {
+      titulo: 'Editar Curso',
+      name: value.name,
+      description: value.description,
+      price: value.price,
+      start_date: value.start_date,
+      end_date: value.end_date,
+      state: value.state
+    };
+
+    const dialog = this.dialogService.open(
+      SubjectDialogComponent,
+      dialogConfig
+    );
+
+    dialog.afterClosed().subscribe((data) => {
+      if (data) {
+        console.log(data)
+        this.firebaseservice.editSubject(data, value.id)
+        // console.log(this.firebaseservice.editSubject(data, data.id))
+
+        this.subjects = this.subjects.map((subj) => {
+          return subj.id === value.id ? { ...subj, ...data } : subj;
+        });
+
+
+      }
+    })
+
 
   }
 

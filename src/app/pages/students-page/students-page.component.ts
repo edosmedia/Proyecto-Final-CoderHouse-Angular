@@ -2,8 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Student } from '../../models/student.model';
 import { StudentDialogComponent } from '../../shared/components/student-dialog/student-dialog.component';
-import { StudentsService } from '../../services/students.service';
-import { state } from '@angular/animations';
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
@@ -25,7 +23,7 @@ export class StudentsPageComponent implements OnInit {
     'delete',
   ];
 
-  constructor(private readonly dialogService: MatDialog, private studentService: StudentsService, private firebaseservice: FirebaseService) {
+  constructor(private readonly dialogService: MatDialog, private firebaseservice: FirebaseService) {
 
     this.firebaseservice.getStundents().subscribe(dataApi => {
       this.students = dataApi;
@@ -105,7 +103,7 @@ export class StudentsPageComponent implements OnInit {
     dialog.afterClosed().subscribe((data) => {
       // console.log(data)
       if (data) {
-                this.students = this.students.map((stun) =>
+        this.students = this.students.map((stun) =>
           stun.id === student.id ? { ...stun, ...data } : stun,
 
         );

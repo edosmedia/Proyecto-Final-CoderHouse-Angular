@@ -98,6 +98,10 @@ export class SubjectsComponent implements OnInit {
 
   }
 
+  async removeSubject(value : Subject) {
+    const res = await this.firebaseservice.deleteSubject(value)
+
+  }
 
 
   ngOnInit(): void {

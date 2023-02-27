@@ -94,12 +94,17 @@ export class FirebaseService {
       return null;
     }
   }
-
+   // Agregar Curso
   postSubject(subject: Subject) {
     const subjectRef = collection(this.firestore, 'cursos')
     return addDoc(subjectRef, subject)
   }
 
+ // Eliminar Curso
+  deleteSubject(value: Subject) {
+    const subjectDoctRef = doc(this.firestore, `cursos/${value.id}`);
+    return deleteDoc(subjectDoctRef)
+  }
 
   async editSubject(subject: any, id: any) {
     console.log(subject, "registro para firebase")

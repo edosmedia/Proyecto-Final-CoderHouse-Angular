@@ -8,7 +8,7 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 export class DashboardPageComponent implements OnInit {
 
-  constructor(private FirebaseService: FirebaseService ) { }
+  constructor() { }
 
   ngOnInit(): void {
 

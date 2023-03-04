@@ -1,14 +1,9 @@
-import { SubjectsComponent } from './../pages/subjects/subjects.component';
-import { EnrolledComponent } from './../pages/enrolled/enrolled.component';
+
 import { Observable, observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { collection, collectionData, Firestore, addDoc, deleteDoc, doc, updateDoc, getFirestore, where, query, getDocs, getDoc } from '@angular/fire/firestore';
 import { Student } from '../models/student.model';
 import { Subject } from '../models/subject.model';
-import { Matriculados } from '../models/matriculados.model';
-import { setDoc } from '@firebase/firestore';
-import { environment } from '../../environments/environment.prod';
-import { initializeApp } from '@angular/fire/app';
 import { Users } from '../models/users.model';
 
 @Injectable({
@@ -50,8 +45,6 @@ export class FirebaseService {
   }
   // Editar Alumnos (Woking)
   async editStundents(student: any, id: any) {
-    // const app = initializeApp(environment.firebase)
-    // const db = getFirestore(app);
     const studenDoctRef = doc(this.db, 'alumnos', id);
     console.log(studenDoctRef + "registro")
     await updateDoc(studenDoctRef, {

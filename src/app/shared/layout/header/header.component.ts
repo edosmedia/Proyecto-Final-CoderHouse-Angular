@@ -13,5 +13,6 @@ export class HeaderComponent implements OnInit {
 
   clickMenu() {
     this.sideNavService.toggle();
+    console.log(this.sideNavService);
   }
 }
